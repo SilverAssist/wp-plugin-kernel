@@ -1,0 +1,53 @@
+{
+    "name": "silverassist/wp-plugin-kernel",
+    "description": "Shared LoadableInterface + AbstractPlugin bootstrap pattern for Silver Assist WordPress plugins.",
+    "type": "library",
+    "license": "PolyForm-Noncommercial-1.0.0",
+    "authors": [
+        {
+            "name": "Silver Assist",
+            "homepage": "https://silverassist.com/"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "silverassist/coding-standards": "^1.0",
+        "silverassist/wp-coding-standards": "^1.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "php-stubs/wordpress-stubs": "^6.8",
+        "php-stubs/wordpress-tests-stubs": "^6.8 || ^7.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^9.6",
+        "yoast/phpunit-polyfills": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SilverAssist\\PluginKernel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SilverAssist\\PluginKernel\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "phpunit": "phpunit",
+        "test": [
+            "@phpcs",
+            "@phpstan",
+            "@phpunit"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

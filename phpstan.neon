@@ -1,0 +1,24 @@
+includes:
+    - vendor/silverassist/coding-standards/phpstan/base.neon
+    - vendor/silverassist/wp-coding-standards/phpstan/base.neon
+
+parameters:
+    paths:
+        - src
+    # scanFiles, not stubFiles: WP_UnitTestCase has no real declaration
+    # anywhere else to refine (no actual WordPress Test Suite installed
+    # for this package's own analysis) — stubFiles only overrides types
+    # for symbols that already exist via some other autoload path, it
+    # doesn't declare new ones. scanFiles parses the file's declarations
+    # directly into PHPStan's symbol table, which is what a from-scratch
+    # class stub needs. Found by testing both directives against this
+    # exact "Class ... extends unknown class WP_UnitTestCase" error.
+    scanFiles:
+        - vendor/php-stubs/wordpress-tests-stubs/wordpress-tests-stubs.php
+
+# No szepeviktor/phpstan-wordpress include here: this package has no
+# WordPress function calls of its own to stub (see AbstractPlugin's
+# docblock — it's pure PHP, no \add_action()/\plugins_loaded etc.), so
+# skip the extra dependency. A real plugin consuming this kernel WILL
+# need it — see wp-coding-standards' README for the full 3-include
+# snippet.

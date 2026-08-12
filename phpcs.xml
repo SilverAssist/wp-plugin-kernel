@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="wp-plugin-kernel">
+    <description>Dogfoods silverassist/wp-coding-standards — this package IS one of its target consumers.</description>
+
+    <arg name="colors"/>
+    <arg value="ps"/>
+
+    <file>src</file>
+
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <rule ref="SilverAssistWP"/>
+
+    <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+        <properties>
+            <property name="prefixes" type="array">
+                <element value="SilverAssist\PluginKernel"/>
+            </property>
+        </properties>
+    </rule>
+</ruleset>
