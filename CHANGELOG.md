@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- The `vcs` repositories in `composer.json` (development dependencies) and in the README snippet now carry `"no-api": true`, so Composer reads tags with git instead of the GitHub API. A lockless install cost about 100 API requests of the token's hourly quota, enough to exhaust it in a busy CI.
+
 ## [1.0.1] - 2026-09-25
 
 ### Changed
