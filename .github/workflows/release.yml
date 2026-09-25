@@ -65,8 +65,8 @@ jobs:
           echo "EOF" >> "$GITHUB_OUTPUT"
 
       # No ZIP artifact: this is a Composer library, not a standalone
-      # WordPress plugin -- Packagist/Composer resolve directly from the
-      # tagged git tree.
+      # WordPress plugin -- Composer resolves it directly from the tagged
+      # git tree through a `vcs` repository.
       - name: Create GitHub Release
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         with:
