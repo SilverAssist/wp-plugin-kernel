@@ -30,6 +30,8 @@ jobs:
           tools: composer:v2
 
       - name: Install Composer dependencies
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
         run: composer install --no-interaction --no-progress --optimize-autoloader
 
       - name: Check code standards
