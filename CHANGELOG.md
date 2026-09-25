@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-09-25
+
+### Changed
+
+- Declared `vcs` repositories for the SilverAssist development dependencies (`coding-standards`, `wp-coding-standards`), so contributors and CI resolve them from GitHub instead of Packagist.org.
+
+### Documentation
+
+- Documented installing this package through a Composer `vcs` repository with a GitHub token, instead of Packagist.org (README, "Installing via Composer").
+
 ## [1.0.0] - 2026-08-12
 
 ### Added
