@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Dependabot (Composer and GitHub Actions) with auto-merge through the shared `SilverAssist/workflows/dependabot-auto-merge@v1` action, once the required checks pass and the release-age cooldown clears (3 days for patch, 7 for minor). Majors wait for a person.
+
 ### Changed
 
 - The `vcs` repositories in `composer.json` (development dependencies) and in the README snippet now carry `"no-api": true`, so Composer reads tags with git instead of the GitHub API. A lockless install cost about 100 API requests of the token's hourly quota, enough to exhaust it in a busy CI.
