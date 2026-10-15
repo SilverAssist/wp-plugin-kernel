@@ -1,0 +1,55 @@
+version: 2
+
+# Private SilverAssist Composer packages are `vcs` repositories on GitHub.
+# Once those repositories are private (WEB-1194), Dependabot needs a token to
+# read them. COMPOSER_GITHUB_TOKEN is a Dependabot secret holding a token with
+# read access to the SilverAssist repositories.
+registries:
+  silverassist-github:
+    type: git
+    url: https://github.com
+    username: x-access-token
+    password: ${{secrets.COMPOSER_GITHUB_TOKEN}}
+
+updates:
+  # Composer updates, minor and patch grouped; majors arrive one by one
+  - package-ecosystem: "composer"
+    directory: "/"
+    registries:
+      - silverassist-github
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Mexico_City"
+    labels:
+      - "dependencies"
+      - "composer"
+    open-pull-requests-limit: 10
+    groups:
+      composer-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # GitHub Actions updates, minor and patch grouped
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Mexico_City"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    open-pull-requests-limit: 10
+    groups:
+      github-actions-updates:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
